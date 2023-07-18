@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Countdown Timer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    
+    h1 {
+      margin-top: 30px;
+    }
+    
+    .countdown-container {
+      margin-top: 50px;
+    }
+    
+    .countdown-item {
+      display: inline-block;
+      margin: 0 10px;
+    }
+    
+    .countdown-value {
+      font-size: 48px;
+    }
+    
+    .countdown-label {
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <h1>Countdown Timer</h1>
+  
+  <div class="countdown-container">
+    <div class="countdown-item">
+      <div class="countdown-value" id="days"></div>
+      <div class="countdown-label">Days</div>
+    </div>
+    <div class="countdown-item">
+      <div class="countdown-value" id="hours"></div>
+      <div class="countdown-label">Hours</div>
+    </div>
+    <div class="countdown-item">
+      <div class="countdown-value" id="minutes"></div>
+      <div class="countdown-label">Minutes</div>
+    </div>
+    <div class="countdown-item">
+      <div class="countdown-value" id="seconds"></div>
+      <div class="countdown-label">Seconds</div>
+    </div>
+  </div>
+  
+  <script>
+    // Set the date and time to count down to
+    const countDownDate = new Date("2023-12-31T23:59:59").getTime();
+
+    // Update the countdown every second
+    const countdown = setInterval(() => {
+      // Get the current date and time
+      const now = new Date().getTime();
+
+      // Calculate the time remaining
+      const timeRemaining = countDownDate - now;
+
+      // Calculate days, hours, minutes, and seconds
+      const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+      // Update the countdown UI
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+
+      // If the countdown ends, display a message
+      if (timeRemaining < 0) {
+        clearInterval(countdown);
+        document.getElementById("days").textContent = "0";
+        document.getElementById("hours").textContent = "0";
+        document.getElementById("minutes").textContent = "0";
+        document.getElementById("seconds").textContent = "0";
+        document.getElementById("countdown-container").innerHTML = "<p>Countdown has ended!</p>";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
