@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sound App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background-color: #f1f1f1;
+    }
+    
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .button {
+      background-color: #4caf50;
+      color: #ffffff;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      margin-bottom: 10px;
+    }
+    
+    .button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Sound App</h1>
+    <button class="button" onclick="playSound()">Play Sound</button>
+    <button class="button" onclick="stopSound()">Stop Sound</button>
+  </div>
+
+  <audio id="sound">
+    <source src="http://commondatastorage.googleapis.com/codeskulptor-assets/Evillaugh.ogg" type="audio/mpeg">
+  </audio>
+
+  <script>
+    var audio = document.getElementById('sound');
+
+    function playSound() {
+      audio.play();
+    }
+
+    function stopSound() {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+  </script>
+</body>
+</html>
